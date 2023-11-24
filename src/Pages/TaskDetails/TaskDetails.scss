@@ -1,0 +1,17 @@
+.task-details-container {
+  padding: 2rem;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem;
+  }
+
+  .task-details {
+
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

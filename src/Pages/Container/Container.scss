@@ -1,0 +1,12 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 1rem;
+}
+
+.content-section {
+  display: flex;
+  padding: 2rem;
+  column-gap: 20px;
+  overflow: auto;
+}
