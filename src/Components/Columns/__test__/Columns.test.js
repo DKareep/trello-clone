@@ -138,14 +138,14 @@ describe("props are rendered correctly", () => {
         const titleDeadlineWrapper = within(ticketElement).getByTestId(/title-deadline/i)
         const descriptionWrapper = within(ticketElement).getByTestId(/description/i)
 
-        const nameComponent = within(titleDeadlineWrapper).getByText(/Name/i)
+        const nameComponent = within(titleDeadlineWrapper).getByText(/Name1/i)
         const deadlineComponent = within(titleDeadlineWrapper).getByText(/time/i)
         const descriptionComponent = within(descriptionWrapper).getByText(/lorem/i)
 
 
         expect(nameComponent).toHaveTextContent("Name1")
         expect(deadlineComponent).toHaveTextContent("time")
-        expect(descriptionComponent).toHaveTextContent("Lorem ipsum dolar simit")
+        expect(descriptionComponent).toHaveTextContent("Lorem ipsu")
 
     })
     it("check respective functions are called properly on user action", () => {
@@ -172,36 +172,7 @@ describe("props are rendered correctly", () => {
 
 })
 
-describe.skip("checks for functionalities", () => {
 
-    const getLocalStorage = () => {
-        const localData = JSON.parse(localStorage.getItem("trello-clone"))
-
-        if (localData !== null) {
-            return localData
-        }
-        return []
-    }
-
-    const handleDeleteTicket = jest.fn()
-
-    beforeAll(() => {
-        localStorage.setItem("trello-clone", JSON.stringify(singlePayload))
-    })
-
-    afterAll(()=> {
-        localStorage.removeItem("trello-clone")
-    })
-        it("func", ()=> {
-            renderComponent()
-            const ticketElement = screen.getByTestId(/cards-1/i)
-            const deleteIcon = within(ticketElement).getByLabelText(/delete ticket/i)
-            userEvent.click(deleteIcon)
-
-
-            expect(handleDeleteTicket).toBeCalled()
-        })
-})
 
 describe("move tickets", () => {
     beforeEach(() => {

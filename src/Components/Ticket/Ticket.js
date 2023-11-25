@@ -1,5 +1,5 @@
 import "./Ticket.scss"
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -21,7 +21,7 @@ const Ticket = ({data, columnId, handleFavoriteTask, handleDeleteTicket, handleE
         navigate(`/${columnId}/${data.id}`)
 
     }
-    const drag = (ev,columnId, ticket) => {
+    const drag = (ev, columnId, ticket) => {
         ev.dataTransfer.setData("col", columnId);
         ev.dataTransfer.setData("ticket", ticket);
     }
@@ -30,29 +30,36 @@ const Ticket = ({data, columnId, handleFavoriteTask, handleDeleteTicket, handleE
             <Card
                 data-testid={`cards-${columnId}-${data.id}`}
                 draggable={true}
-                    onDragStart={(e) => drag(e, columnId, data.id)}
-                    style={{backgroundColor: cardColor}} variant="outlined" sx={{ width: 300, minHeight: data.image ? 330 : 250}}>
+                onDragStart={(e) => drag(e, columnId, data.id)}
+                style={{backgroundColor: cardColor}} variant="outlined"
+                sx={{width: 300, minHeight: data.image ? 330 : 250}}>
                 <CardContent
                     sx={{padding: 0}}
                 >
 
-                    <Card sx={{cursor: "pointer"}} data-testid={"title-deadline"} onClick={showDetails} >
+                    <Card sx={{cursor: "pointer"}} data-testid={"title-deadline"} onClick={showDetails}>
 
 
-                        <Typography  sx={{fontSize: 14, paddingLeft: 2, paddingTop: 2}} variant="body2" color="text.secondary">Name</Typography>
-                        <Typography data-testid={"name"} sx={{fontSize: 20,  paddingLeft: 2, paddingBottom: 1}} variant="body2" color="text.primary">
-                        { data.name.substring(0,10)}
-                    </Typography>
+                        <Typography sx={{fontSize: 14, paddingLeft: 2, paddingTop: 2}} variant="body2"
+                                    color="text.secondary">Name</Typography>
+                        <Typography data-testid={"name"} sx={{fontSize: 20, paddingLeft: 2, paddingBottom: 1}}
+                                    variant="body2" color="text.primary">
+                            {data.name.substring(0, 10)}
+                        </Typography>
 
-                        <Typography  sx={{fontSize: 14,  paddingLeft: 2}} variant="body2" color="text.secondary">Deadline</Typography>
-                        <Typography data-testid={"deadline"} sx={{fontSize: 20, paddingLeft: 2, paddingBottom: 1}} variant="body2" color="text.primary">
-                        { data.name.substring(0,10)}
-                    </Typography>
+                        <Typography sx={{fontSize: 14, paddingLeft: 2}} variant="body2"
+                                    color="text.secondary">Deadline</Typography>
+                        <Typography data-testid={"deadline"} sx={{fontSize: 20, paddingLeft: 2, paddingBottom: 1}}
+                                    variant="body2" color="text.primary">
+                            {data.deadline.substring(0, 10)}
+                        </Typography>
 
-                        <Typography sx={{fontSize: 14,  paddingLeft: 2}} variant="body2" color="text.secondary">Description</Typography>
-                        <Typography data-testid={"details"} sx={{fontSize: 20, paddingLeft: 2, paddingBottom: 1}} variant="body2" color="text.primary">
-                        { data.description.substring(0,10)}
-                    </Typography>
+                        <Typography sx={{fontSize: 14, paddingLeft: 2}} variant="body2"
+                                    color="text.secondary">Description</Typography>
+                        <Typography data-testid={"description"} sx={{fontSize: 20, paddingLeft: 2, paddingBottom: 1}}
+                                    variant="body2" color="text.primary">
+                            {data.description.substring(0, 10)}
+                        </Typography>
 
                         {data.image &&
                             <CardMedia

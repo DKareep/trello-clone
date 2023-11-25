@@ -27,11 +27,9 @@ const TaskDetails = () => {
     const navigate = useNavigate()
     useEffect(() => {
         const col = columns.filter(column => column.id = colId)
-        console.log(col)
         const filteredTask = col[0].tickets.filter(ticket => {
             return ticket.id === parseInt(ticketId)
         })
-        console.log(filteredTask)
         setTaskDetails(filteredTask[0])
     }, [columns, colId, ticketId])
 
@@ -69,7 +67,7 @@ const TaskDetails = () => {
                             <Typography sx={{mb: 1.5}} color="text.secondary">
                                 Deadline
                             </Typography>
-                            <Typography data-testid={"task-description"} variant="h5" color="text.primary"
+                            <Typography data-testid={"task-deadline"} variant="h5" color="text.primary"
                                        >
                                 {taskDetails?.deadline}
                             </Typography>
