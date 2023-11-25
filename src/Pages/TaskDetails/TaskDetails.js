@@ -26,11 +26,11 @@ const TaskDetails = () => {
 
     const navigate = useNavigate()
     useEffect(() => {
-        const col = columns.filter(column => column.id = colId)
+        const col = columns.filter(column => column.id === parseInt(colId) )
         const filteredTask = col[0].tickets.filter(ticket => {
             return ticket.id === parseInt(ticketId)
-        })
-        setTaskDetails(filteredTask[0])
+        })[0]
+        setTaskDetails(filteredTask)
     }, [columns, colId, ticketId])
 
     const handleBackButton = () => {
