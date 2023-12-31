@@ -6,15 +6,13 @@ import AddNew from "../../Components/AddNewColumn/AddNew";
 
 
 const getLocalStorage = () => {
-    const localData = JSON.parse(localStorage.getItem("trello-clone"))
-
-    if (localData !== null) {
+    let localData = JSON.parse(localStorage.getItem("trello-clone"))
+    if (localData !== null && localData.length > 0) {
         return localData
     }
-    return []
+    return [{ "id": 1, "name": "col1", "tickets": [ { "id": 1, "name": "ticket1", "description": "Ticket Description", "deadline": "2024-01-02", "isFavorite": false, "image": "" }, { "id": 2, "name": "ticket 2", "description": "Ticket Description 2", "deadline": "2024-01-02", "isFavorite": false, "image": "" } ] }, { "id": 2, "name": "col2", "tickets": [ { "id": 1, "name": "ticket2", "description": "Ticket Description 3", "deadline": "2024-01-03", "isFavorite": false, "image": "" } ] } ]
 }
 const Container = () => {
-
     const [columns, setColumn] = useState(getLocalStorage)
 
     const setLocalStorage = (updatedColumns) => {
@@ -114,13 +112,10 @@ const Container = () => {
     }
 
     const handleSort = (columnId) => {
-
-
         const sortedColumns = columns.map(column => {
             if (column.id === columnId) {
                 const tickets = column.tickets.sort((a, b) => {
-
-                    return a.name.localeCompare(b.name)
+                    return   new Date(b.deadline).getTime() - new Date(a.deadline).getTime()
                 })
                 return {...column, tickets}
             } else {

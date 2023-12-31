@@ -37,6 +37,8 @@ export default function AddNew({
                                    columnId,
 
                                }) {
+
+
     const [open, setOpen] = useState(false);
     const [columnName, setColumnName] = useState("");
 
@@ -86,7 +88,7 @@ export default function AddNew({
 
     return (
         <div >
-            <Button onClick={handleOpen}>
+            <Button  variant={`${type === "column" ? "contained" : "outlined"}`} onClick={handleOpen} app>
                 {type === "column" ? "Add new column" : "Add new ticket"}
             </Button>
             <Modal
@@ -141,8 +143,8 @@ export default function AddNew({
                             />
                             <TextField
                                 id="outlined-basic"
-                                label="Deadline"
                                 variant="outlined"
+                                type={"date"}
                                 value={deadline}
                                 required={true}
                                 onChange={(e) => setDeadline(e.target.value)}
